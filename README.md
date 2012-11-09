@@ -1,4 +1,5 @@
-foursquare
-==========
+Web app example of [foursquare](https://foursquare.com). It uses OAuth2 for
+client side authentication, so we don't need server middleware, we can just use
+JSONP or CORS for services requests.
 
-App example for https://foursquare.com API usage
+Please check the code inside the branch gh-pages.
