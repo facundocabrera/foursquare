@@ -55,7 +55,7 @@ function onHashChange(e) {
         // If we have a token, try to use it
         var query = $.bbq.getState('req');
         if (query) {
-            makeRequest('user/self');
+            makeRequest('users/self');
         }
     } else {
         doAuthRedirect();
