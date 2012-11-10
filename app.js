@@ -11,8 +11,8 @@ function displayResult(result) {
 function doAuthRedirect() {
     var redirect = window.location.href.replace(window.location.hash, '');
 
-    var url = AUTH_BASE + 'oauth2/authenticate?response_type=token&client_id=' + CLIENT_ID + 
-              '&redirect_uri=' + encodeURIComponent(redirect) + 
+    var url = AUTH_BASE + 'oauth2/authenticate?response_type=token&client_id=' + CLIENT_ID +
+              '&redirect_uri=' + encodeURIComponent(redirect) +
               '&state=' + encodeURIComponent($.bbq.getState('req') || 'users/self');
 
     window.location.href = url;
@@ -31,16 +31,12 @@ function makeRequest(query) {
     var date = new Date();
     var versionParam = '&v=' + (date.getYear() + 1900) + zeroPad(date.getMonth() + 1) + zeroPad(date.getDate());
     var url = API_BASE + 'v2/' + query + tokenParam + versionParam;
-    
+
     if (url.indexOf("callback=") > 0) {
         throw 'Invalid URL.';
     }
 
     $.getJSON(url.replace('?', '?callback=?&'), {}, displayResult);
-}
-
-function changeQuery() {
-    $.bbq.pushState({'req': $('#query').val()});
 }
 
 function onHashChange(e) {
@@ -55,7 +51,7 @@ function onHashChange(e) {
         // If we have a token, try to use it
         var query = $.bbq.getState('req');
         if (query) {
-            makeRequest('users/self');
+            makeRequest(query);
         }
     } else {
         doAuthRedirect();
@@ -63,6 +59,17 @@ function onHashChange(e) {
 }
 
 $(function() {
+
+    $('#query').on('submit', function () {
+        var self = $(this);
+
+        $.bbq.pushState({
+            req : self.find('[type=text]').val()
+        });
+
+        return false;
+    });
+
     $(window).bind('hashchange', onHashChange);
     $(window).trigger('hashchange');
 });
