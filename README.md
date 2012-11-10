@@ -2,3 +2,4 @@
 
 * [Foursquare documentation](https://developer.foursquare.com/overview/auth)
 * [User-Agent Flow - AKA JS Authentication from the web browser](http://tools.ietf.org/html/draft-ietf-oauth-v2-07#section-2.2)
+* [Same origin policy](http://tools.ietf.org/html/rfc6454)
