@@ -60,15 +60,21 @@ function onHashChange(e) {
 
 $(function() {
 
-    $('#query').on('submit', function () {
-        var self = $(this);
+    $('#query')
+        .on('submit', function () {
+            var self = $(this);
 
-        $.bbq.pushState({
-            req : self.find('[type=text]').val()
+            $.bbq.pushState({
+                req : self.find('[type=text]').val()
+            });
+
+            return false;
+        })
+        .on('keypress', function (e) {
+            if(e && e.keyCode == 13) {
+                $(this).trigger('submit');
+            }
         });
-
-        return false;
-    });
 
     $(window).bind('hashchange', onHashChange);
     $(window).trigger('hashchange');
