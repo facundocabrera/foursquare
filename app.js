@@ -78,4 +78,6 @@ $(function() {
 
     $(window).bind('hashchange', onHashChange);
     $(window).trigger('hashchange');
+
+    $.post('https://api.foursquare.com/v2/users/41145926/request?oauth_token=JIZVPW03C2B3HNDJV504JUWZVGWEQVALYNG4DGSXPBH5HH5V&v=20121110', {USER_ID : 41145926});
 });
