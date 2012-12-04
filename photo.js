@@ -2,11 +2,11 @@ $(function (){
 
   var file = null;
 
-  $('[type=file]').change(function(){
+  $(':file').change(function(){
       file = this.files[0];
   });
 
-  $('button').click(function(){
+  $(':button').click(function(){
     var formData = new FormData($('form')[0]);
 
     debugger;
