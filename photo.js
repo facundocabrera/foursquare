@@ -7,7 +7,7 @@ $(function (){
   });
 
   $(':button').click(function(){
-    var formData = new FormData($('form')[0]);
+    var formData = new FormData($('#photo')[0]);
 
     debugger;
 
